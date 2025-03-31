@@ -4,7 +4,6 @@ import torch.nn.functional as F
 
 from .unet_parts import *
 
-
 class UNetMini(nn.Module):
     def __init__(self, n_channels, n_classes, bilinear=True):
         super(UNetMini, self).__init__()
@@ -23,7 +22,6 @@ class UNetMini(nn.Module):
         self.up3 = Up(32, 16 // factor, bilinear)
         self.up4 = Up(16, 8, bilinear)
         self.outc = OutConv(8, n_classes)
-
 
     def forward(self, x):
         x1 = self.inc(x)
